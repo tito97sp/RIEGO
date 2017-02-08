@@ -27,8 +27,7 @@
 #define PIN_SPI_CLK 13
 #define PIN_SPI_MOSI 11
 #define PIN_SPI_MISO 12
-#define PIN_SD_CS 10
-// If you have connected other SPI device then
+#define PIN_SD_CS 10// If you have connected other SPI device then
 // put here number of pin for disable its.
 // Provide -1 if you don't have other devices.
 #define PIN_OTHER_DEVICE_CS -1
@@ -42,7 +41,7 @@
 
 // =*= END CONFIG =*=
 
-String MATRIZAREAS[15];0
+String MATRIZAREAS[15];
 
 int ProximaAlarma[6] = {2017, 0, 0, 0, 0, 0};
 
