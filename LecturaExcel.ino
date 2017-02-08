@@ -27,7 +27,8 @@
 #define PIN_SPI_CLK 13
 #define PIN_SPI_MOSI 11
 #define PIN_SPI_MISO 12
-#define PIN_SD_CS 10// If you have connected other SPI device then
+#define PIN_SD_CS 10
+// If you have connected other SPI device then
 // put here number of pin for disable its.
 // Provide -1 if you don't have other devices.
 #define PIN_OTHER_DEVICE_CS -1
@@ -84,10 +85,11 @@ void setup() {
   // ----------------------------------------------------- //
 
   actualizarArchivosAreas();
-  proximaFecha(2017, 1, 4, 0, 0);
+  proximaFecha(2017, 2, 2, 3, 0);
   for (int i = 0; i < 6; i++) {
-    Serial.print(ProximaAlarma[i]);
+    Serial.println(ProximaAlarma[i]);
   }
+
 
 
 }
@@ -273,12 +275,8 @@ char* String2Char(String Nombre) {
 }
 
 
-
-
-
-
-void proximaFecha(int ano, int mes, int dia, int hora, int minuto) {                                   //ERROR GORDO.
-
+void proximaFecha(int ano, int mes, int dia, int hora, int minuto) {                                   
+  
   int Ano = ano;
   int Mes = mes;
   int Dia = dia;
@@ -307,14 +305,13 @@ void proximaFecha(int ano, int mes, int dia, int hora, int minuto) {            
       int u = LineaMinima(Mes, Dia, Hora, Minuto, MATRIZAREAS[i]);
       int bufferAlarma[6];
       bufferAlarma[0] = Ano;
-      bufferAlarma[1] = leerCasilla(u, 0, MATRIZAREAS[i]);             //MES
-      bufferAlarma[2] = leerCasilla(u, 1, MATRIZAREAS[i]);             //DIA
-      bufferAlarma[3] = leerCasilla(u, 2, MATRIZAREAS[i]);             //HORA
-      bufferAlarma[4] = leerCasilla(u, 3, MATRIZAREAS[i]);             //MINUTO
-      bufferAlarma[5] = leerCasilla(u, 4, MATRIZAREAS[i]);             //DURACION
+      bufferAlarma[1] = leerCasilla(u, 0, MATRIZAREAS[i]);                        //MES
+      bufferAlarma[2] = leerCasilla(u, 1, MATRIZAREAS[i]);                        //DIA
+      bufferAlarma[3] = leerCasilla(u, 2, MATRIZAREAS[i]);                        //HORA
+      bufferAlarma[4] = leerCasilla(u, 3, MATRIZAREAS[i]);                        //MINUTO
+      bufferAlarma[5] = leerCasilla(u, 4, MATRIZAREAS[i]);                        //DURACION
 
       if ((bufferAlarma[1] != 0) || (bufferAlarma[2] != 0) || (bufferAlarma[3] != 0) || (bufferAlarma[4] != 0)) {
-       Serial.println("Aqui estamos tocando lo huevos");
         if (bufferAlarma[1] < ProximaAlarma[1]) {
           for (int i = 0; i < 6; i++) {
             ProximaAlarma[i] = bufferAlarma[i];
